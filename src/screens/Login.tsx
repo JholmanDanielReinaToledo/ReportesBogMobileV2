@@ -7,6 +7,7 @@ import {
   Pressable,
   Alert,
 } from 'react-native';
+import RNRestart from 'react-native-restart';
 import {login} from '../services/loginService';
 
 const Login = () => {
@@ -16,6 +17,7 @@ const Login = () => {
   const loginLocal = async () => {
     const respuesta = await login({identificacion, password});
     if (respuesta) {
+      RNRestart.Restart();
     } else {
       Alert.alert('Ocurrio un error');
     }

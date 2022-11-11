@@ -13,7 +13,7 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 const MyTabs = () => {
-  const [isLoged, setIsLoged] = useState<boolean>(false);
+  const [isLoged, setIsLoged] = useState<boolean>();
 
   const getUserFromStorage = async () => {
     const userR = await getCurrentUser();
@@ -27,12 +27,9 @@ const MyTabs = () => {
   useEffect(() => {
     getUserFromStorage();
   }, []);
+  console.log(isLoged);
 
-  if (isLoged) {
-    return <NavForLogin />;
-  }
-
-  return <NavLoged />;
+  return isLoged ? <NavLoged /> : <NavForLogin />;
 };
 
 const NavForLogin = () => {

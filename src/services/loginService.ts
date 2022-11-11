@@ -26,6 +26,14 @@ export const getCurrentUser = async () => {
   }
 };
 
+export const loguot = async () => {
+  try {
+    AsyncStorage.clear();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const login = async (usuariologin: UserLogin) => {
   const url = `${URL_BACK}/login`;
   const requestOptions = {
